@@ -50,7 +50,6 @@ class _HomeState extends State<Home> {
             value: DatabaseService(uid: user!.uid).trackers, initialData: []),
       ],
       child: Scaffold(
-          // return Scaffold(
           bottomNavigationBar: NavigationBarTheme(
             data: NavigationBarThemeData(
                 indicatorColor: Colors.blue.shade200,
@@ -83,7 +82,6 @@ class _HomeState extends State<Home> {
                       icon: Icon(Icons.edit_note), label: 'Tracker')
                 ]),
           ),
-          // backgroundColor: Colors.brown[50],
           appBar: AppBar(
             title: Text('CrispList'),
             backgroundColor: Color.fromARGB(188, 152, 22, 13),

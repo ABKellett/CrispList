@@ -44,7 +44,6 @@ class _ItemDetailState extends State<ItemDetail> {
     return StreamBuilder<UserData>(
         stream: DatabaseService(uid: user!.uid).userData,
         builder: (context, snapshot) {
-          // print(snapshot.hasData);
           if (snapshot.hasError) {
             print("Detail Snapshot: ${snapshot.error}");
             return Text("Detail Snapshot: ${snapshot.error}");
@@ -114,7 +113,7 @@ class _ItemDetailState extends State<ItemDetail> {
                   SizedBox(height: 20.0),
 
                   //Notes
-                  //TODO: Make bigger space.
+                  //TODO: Make bigger space for viewing long notes.
                   TextFormField(
                     initialValue: item.notes,
                     decoration: textInputDecoration.copyWith(hintText: "Notes"),
@@ -127,10 +126,6 @@ class _ItemDetailState extends State<ItemDetail> {
                       style: ElevatedButton.styleFrom(
                           primary: Colors.blue[400], onPrimary: Colors.white),
                       onPressed: () async {
-                        // print(_currentName);
-                        // print(_currentQuant);
-                        // print(_currentPackSize);
-                        // print(_currentStore);
                         if (_formKey.currentState!.validate()) {
                           data.list[widget.index] = ListItem(
                               name: _currentName ?? item.name,

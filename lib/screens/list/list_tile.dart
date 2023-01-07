@@ -11,14 +11,13 @@ class List_Tile extends StatefulWidget {
 
   final ListItem item;
   final int index;
-  // List_Tile({required this.item});
 
   @override
   State<List_Tile> createState() => _List_TileState();
 }
 
 class _List_TileState extends State<List_Tile> {
-  // bool isChecked = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +31,7 @@ class _List_TileState extends State<List_Tile> {
               leading: Checkbox(
                 value: widget.item.isChecked,
                 onChanged: (value) {
-                  //
+                  
                   ListItem oldItem = widget.item.copy();
                   setState(() => widget.item.isChecked = value!);
 

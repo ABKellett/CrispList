@@ -81,7 +81,7 @@ class _CalendarPageState extends State<CalendarPage> {
               focusedDate = focusedDay;
             },
 
-            //Events
+            //Events.. Coming soon
             eventLoader: (day) {
               return _getEventsForDay(day);
             },

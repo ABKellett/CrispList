@@ -26,38 +26,23 @@ class DatabaseService {
   final CollectionReference trackDoc =
       FirebaseFirestore.instance.collection('trackers');
 
-  // List<ListItem> dummy = [(ListItem(name: 'example', quantity: '1'))];
-
   Future updateUserData([List<ListItem>? newList, ListItem? newestItem]) async {
     if (newestItem != null) {
       newList!.add(newestItem);
     }
-    return await listDoc
-        .doc(uid)
-        .set({'list': listToMapList(newList)}); //?? listToMap(dummy)});
+    return await listDoc.doc(uid).set({'list': listToMapList(newList)});
   }
 
   Future updateMeals([List<Meal>? newList]) async {
-    return await mealsDoc
-        .doc(uid)
-        .set({'list': mealListToMapList(newList)}); //?? listToMap(dummy)});
+    return await mealsDoc.doc(uid).set({'list': mealListToMapList(newList)});
   }
 
   Future updateTrackers([List<Tracker>? newList]) async {
-    return await trackDoc
-        .doc(uid)
-        .set({'list': listToMapList(newList)}); //?? listToMap(dummy)});
+    return await trackDoc.doc(uid).set({'list': listToMapList(newList)});
   }
 
   Future updateListItem(ListItem updatedItem, ListItem oldItem) async {
-    // await listDoc.doc(uid).update({
-    //   "list": FieldValue.arrayRemove(list[index])
-    // });
-    // return await listDoc.doc(uid).update({
-    //   "list": FieldValue.arrayUnion([(listItemToMap(updatedItem))])
-    // });
     await deleteFromList(oldItem);
-    // sleep(Duration(seconds: 5));
     return await addToList(updatedItem);
   }
 
@@ -75,19 +60,6 @@ class DatabaseService {
             });
     return map;
   }
-
-  // Map<String, dynamic> listItemToMap(ListItem? item) {
-  //   Map<String, dynamic> map = {
-  //     'isChecked': item!.isChecked,
-  //     'name': item!.name,
-  //     'category': item!.category,
-  //     'quantity': item!.quantity,
-  //     'packSize': item!.packSize,
-  //     'store': item!.store,
-  //     'notes': item!.notes
-  //   };
-  //   return map;
-  // }
 
   List<Map<String, dynamic>?> listToMapList(List<dynamic>? newList) {
     if (newList != null) {
@@ -136,7 +108,6 @@ class DatabaseService {
       //Must have uid
       uid: uid,
       list: _itemListFromSnapshot(snapshot),
-      // list: []
     );
   }
 
@@ -156,19 +127,13 @@ class DatabaseService {
   }
 
   //Events from snapshot.. Coming soon..
+
   // List<CalEvent> _EventsFromSnapshot(DocumentSnapshot snapshot) {
   //   List<dynamic> theList = snapshot.get('list');
   //   List<CalEvent> newList = [];
 
   //   theList.forEach(((item) {
-  //     ListItem x = ListItem(
-  //         isChecked: item['isChecked'] ?? false,
-  //         name: item['name'] ?? 'noName',
-  //         category: item['category'] ?? null,
-  //         quantity: item['quantity'] ?? '0',
-  //         packSize: item['packSize'] ?? null,
-  //         store: item['store'] ?? null,
-  //         notes: item['notes'] ?? null);
+  //
   //     newList.add(x);
   //   }));
 
@@ -212,33 +177,27 @@ class DatabaseService {
 //Getters
   //get list stream
   Stream<List<ListItem>> get list {
-    // var q = listDoc.doc(uid).snapshots().;
-    // print("UID: $uid");
     return listDoc.doc(uid).snapshots().map(_itemListFromSnapshot);
-    // return listDoc.snapshots().map(_itemListFromSnapshot);
   }
 
   //get user List stream
   Stream<UserData> get userData {
-    // return listCollection.doc(uid).snapshots().map(_userDataFromSnapshot);
     return listDoc.doc(uid).snapshots().map(_userDataFromSnapshot);
   }
 
   //get user meal stream
   Stream<List<Meal>> get meals {
-    // return listCollection.doc(uid).snapshots().map(_userDataFromSnapshot);
     return mealsDoc.doc(uid).snapshots().map(_MealsFromSnapshot);
   }
 
-  //get user event stream
+  //get user event stream.. Coming soon
+
   // Stream<List<CalEvent>> get events {
-  //   // return listCollection.doc(uid).snapshots().map(_userDataFromSnapshot);
   //   return eventsDoc.doc(uid).snapshots().map(_EventsFromSnapshot);
   // }
 
   //get user tracker stream
   Stream<List<Tracker>> get trackers {
-    // return listCollection.doc(uid).snapshots().map(_userDataFromSnapshot);
     return trackDoc.doc(uid).snapshots().map(_TrackersFromSnapshot);
   }
 

@@ -25,23 +25,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    // final user = Provider.of<TheUser?>(context);
-    // return MultiProvider(
-    //   providers: [
-    //     StreamProvider<List<ListItem>>.value(
-    //       initialData: [],
-    //       value: DatabaseService(uid: user!.uid).list,
-    //     ),
-    //     StreamProvider<List<Meal>>.value(
-    //         value: DatabaseService(uid: user!.uid).meals, initialData: []),
-    //     // StreamProvider<List<CalEvent>>.value(
-    //     //     value: DatabaseService(uid: user!.uid).events, initialData: []),
-    //     // StreamProvider<List<Tracker>>.value(
-    //     //     value: DatabaseService(uid: user!.uid).trackers, initialData: []),
-    //   ],
-
-    // child: MaterialApp(home: Wrapper()),
-    // );
+    
     return MaterialApp(home: Wrapper());
   }
 }

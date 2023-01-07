@@ -7,10 +7,6 @@ import 'package:flutter/src/widgets/framework.dart';
 import '../../shared/constants.dart';
 
 class SignIn extends StatefulWidget {
-  // const SignIn({Key? key}) : super(key: key);
-  // final Function toggle;
-  // Register({required this.toggle});
-
   final toggle;
   const SignIn({Key? key, this.toggle}) : super(key: key);
 

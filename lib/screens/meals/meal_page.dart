@@ -22,10 +22,6 @@ class MealPage extends StatefulWidget {
 class _MealPageState extends State<MealPage> {
   @override
   Widget build(BuildContext context) {
-    // List<ListItem> mealList = [
-    //   ListItem(name: "Lasagne"),
-    //   ListItem(name: "Lasagne")
-    // ];
     final mealList = Provider.of<List<Meal>>(context) ?? [];
 
     ///Temp
@@ -117,10 +113,6 @@ class _MealPageState extends State<MealPage> {
             mealList: list,
           );
         }));
-        // return MealDetPage(
-        //   index: index,
-        //   mealList: list,
-        // );
         break;
       //Future button confirmation messages here..
     }

@@ -37,10 +37,6 @@ class _TrackDetPageState extends State<TrackDetPage> {
           } else if (snapshot.hasData) {
             List<Tracker> data = snapshot.data!;
             Tracker? item = data[widget.index];
-            // _currentExpDate = data[widget.index].expDate;
-            // print(_currentExpDate);
-            // var formattedDate =
-            //     "${_currentExpDate?.month}-${_currentExpDate?.day}-${_currentExpDate?.year}";
 
             return Form(
                 key: _formKey,
@@ -63,7 +59,6 @@ class _TrackDetPageState extends State<TrackDetPage> {
                   SizedBox(height: 20.0),
 
                   //Expiration Date
-                  // Text("Expiration Date:   " + _currentExpDate.toString()),
                   ElevatedButton(
                       onPressed: () async {
                         DateTime? theDate = await showDatePicker(

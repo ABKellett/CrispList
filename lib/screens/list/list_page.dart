@@ -26,6 +26,7 @@ class _ListPageState extends State<ListPage> {
     final user = Provider.of<TheUser?>(context);
     final list = Provider.of<List<ListItem>>(context) ?? [];
     //Needs to sort to keep items sorted by category.
+    //TODO: This causes a bug when adding ingredients from Meal ingredient page. Fix timing.
     if (list.isNotEmpty) {
       list.sort((a, b) => a.category!.compareTo(b.category!));
       DatabaseService(uid: user!.uid).updateUserData(list);
@@ -118,7 +119,6 @@ class _ListPageState extends State<ListPage> {
 
   //Slider buttons.
   void _onSliderButtonPress(int index, Actions action, List<ListItem> list) {
-    //TODO: Should I pass in the list rather than the provider?
     final user = Provider.of<TheUser?>(context, listen: false);
     final item = list[index];
 

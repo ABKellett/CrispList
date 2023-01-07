@@ -58,7 +58,6 @@ class _IngrDetailPageState extends State<IngrDetailPage> {
     return StreamBuilder<List<Meal>>(
         stream: DatabaseService(uid: user!.uid).meals,
         builder: (context, snapshot) {
-          // print(snapshot.hasData);
           if (snapshot.hasError) {
             print("Detail Snapshot: ${snapshot.error}");
             return Text("Detail Snapshot: ${snapshot.error}");
@@ -142,10 +141,6 @@ class _IngrDetailPageState extends State<IngrDetailPage> {
                       style: ElevatedButton.styleFrom(
                           primary: Colors.blue[400], onPrimary: Colors.white),
                       onPressed: () async {
-                        // print(_currentName);
-                        // print(_currentQuant);
-                        // print(_currentPackSize);
-                        // print(_currentStore);
                         if (_formKey.currentState!.validate()) {
                           data[mealIndex].ingredients?[index] = ListItem(
                               name: _currentName ?? item.name,

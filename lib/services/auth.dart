@@ -16,8 +16,6 @@ class AuthService {
     return _auth
         //TODO: Fix nullable TheUser
         .authStateChanges()
-        // .listen((User? user){} ??
-        // .map((User user) => _userFromFirebaseUser(user));
         .map(_userFromFirebaseUser);
   }
 
@@ -41,8 +39,6 @@ class AuthService {
           email: email, password: password);
       User? user = result.user;
       String? theuid = user?.uid;
-
-      // print(user?.uid);
       List<ListItem> dummy = [
         (ListItem(name: 'Apple', quantity: '1', store: 'Smith\'s'))
       ];
